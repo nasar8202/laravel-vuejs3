@@ -105,6 +105,15 @@ class AuthenticatedSessionController extends Controller
             'name'     => $request['name'],
         ]);
 
-        return $this->successResponse($user, 'Registration Successfully');
+        $user->attachRole(config('roles.models.role')::whereName('User')->first());
+
+        Auth::login($user);
+
+        $token = $user->createToken($request->userAgent() ?? 'register-token')->plainTextToken;
+
+        return response()->json([
+            'user'  => $user,
+            'token' => $token,
+        ]);
     }
 }
