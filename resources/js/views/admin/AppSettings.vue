@@ -1077,7 +1077,7 @@
             <hr class="mt-3 w-10 pb-4">
             <div
               v-for="setting in analyticsSettings"
-              :key="'analytic_settings_' + setting.id"
+              :key="'analytics_setting_' + setting.id"
               class="mb-3"
             >
               <div class="setting-group mb-3">
@@ -1095,7 +1095,7 @@
                   @update-setting="appSettingUpdateTriggered"
                 />
                 <AppSettingTextInput
-                  v-if="setting.key == 'appGoogleAnalyticsKey'"
+                  v-if="setting.key == 'googleAnalyticsId'"
                   class="ml-8 mr-5"
                   :setting="setting"
                   :loading="loading"
@@ -1104,6 +1104,30 @@
                 />
               </div>
             </div>
+          </div>
+
+          <div v-if="activeTab == 'Withdraw'">
+            <h3 class="text-2xl font-semibold">
+              Withdraw Settings
+            </h3>
+            <hr class="mt-3 w-10 pb-4">
+            <p>Withdraw settings content goes here.</p>
+          </div>
+
+          <div v-if="activeTab == 'Wallet'">
+            <h3 class="text-2xl font-semibold">
+              Wallet Settings
+            </h3>
+            <hr class="mt-3 w-10 pb-4">
+            <p>Wallet settings content goes here.</p>
+          </div>
+
+          <div v-if="activeTab == 'Deposit'">
+            <h3 class="text-2xl font-semibold">
+              Deposit Settings
+            </h3>
+            <hr class="mt-3 w-10 pb-4">
+            <p>Deposit settings content goes here.</p>
           </div>
 
           <div v-if="activeTab == 'General'">
